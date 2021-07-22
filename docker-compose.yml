@@ -1,0 +1,19 @@
+version: '3.8'
+services: 
+  api:
+    container_name: api-container
+    restart: always
+    build: ./soccer-app-backend
+    ports: 
+      - "8081:4000"
+  client:
+    container_name: client-container
+    restart: always
+    build: ./soccer-app-client
+    ports: 
+      - "8080:3000"
+    depends_on: 
+      - api
+
+volumes: 
+  apiDB:
